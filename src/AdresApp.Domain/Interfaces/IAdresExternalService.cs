@@ -1,7 +1,13 @@
-namespace AdresApp.Domain.Interfaces;
+using System.Threading;
+using System.Threading.Tasks;
 
-public interface IAdresExternalService
+namespace AdresApp.Domain.Interfaces
 {
-    Task<string> CargarArchivoAsync(int idArchivo, int idPrestador, Stream fileStream, string fileName, CancellationToken cancellationToken = default);
-    Task<string> ConsultarEstadoCargueAsync(int idCargueArchivo, CancellationToken cancellationToken = default);
+    public interface IAdresExternalService
+    {
+        Task<string> CargarArchivoAsync(int idArchivo, int idPrestador, Stream fileStream, string fileName, CancellationToken cancellationToken = default);
+        Task<string> ConsultarEstadoCargueAsync(int idCargueArchivo, CancellationToken cancellationToken = default);
+        Task<string> GetReporteEjecucionAsync(int idCargueArchivo, CancellationToken ct = default);
+        Task<string> GetReporteDetalleCargueArchivoGlosasAsync(int idCargueArchivo, CancellationToken ct = default);
+    }
 }

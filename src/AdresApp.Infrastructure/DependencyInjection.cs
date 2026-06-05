@@ -1,4 +1,5 @@
 using AdresApp.Application.Interfaces;
+using AdresApp.Application.Services;
 using AdresApp.Domain.Interfaces;
 using AdresApp.Infrastructure.Auth;
 using AdresApp.Infrastructure.External;
@@ -29,6 +30,9 @@ public static class DependencyInjection
         {
             ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
         });
+
+        // Servicio que orquesta el estado del cargue
+        services.AddScoped<CargueEstadoService>();
 
         return services;
     }
